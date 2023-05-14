@@ -26,7 +26,7 @@ const connect = () => {
 //middlewares
 app.use(cookieParser())
 app.use(express.json());
-app.use(cors({credentials:true,origin:"https://odd-cyan-moth-kit.cyclic.app/videos/random"}));
+app.use(cors({credentials:true}));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);

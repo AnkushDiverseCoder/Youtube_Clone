@@ -130,6 +130,7 @@ const Video = () => {
     const fetchData = async () => {
       try {
         const videoRes = await api.get(`/videos/find/${path}`);
+        await api.put(`/videos/view/${videoRes.data._id}`,);
         const channelRes = await api.get(
           `/users/find/${videoRes.data.userId}`
         );

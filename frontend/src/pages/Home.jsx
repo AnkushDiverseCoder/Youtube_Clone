@@ -17,7 +17,7 @@ const Home = ({ type }) => {
   useEffect(() => {
     const fetchVideos = async () => {
      if(type === "sub"){
-       const res = await api.post(`/videos/${type}`,{token:currentUser?.token});
+       const res = await api.post(`/videos/${type}`,{token:currentUser?currentUser.token:""});
        setVideos(res.data);
      }else{
        const res = await api.get(`/videos/${type}`);
@@ -25,7 +25,7 @@ const Home = ({ type }) => {
      }
     }
     fetchVideos()
-  }, [ type ,currentUser.token ])
+  }, [ type ,currentUser ])
 
   return (
     <Container>

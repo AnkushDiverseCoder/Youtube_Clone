@@ -131,7 +131,7 @@ const Upload = ({ setOpen }) => {
   };
   const handleUpload = async (e)=>{
     e.preventDefault();
-    const res = await api.post("/videos", {...inputs, tags ,token:currentUser?.token})
+    const res = await api.post("/videos", {...inputs, tags ,token:currentUser?currentUser.token:""})
     setOpen(false)
     res.status===200 && navigate(`/`)
   }

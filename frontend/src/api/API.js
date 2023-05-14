@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const baseUrl = "https://odd-cyan-moth-kit.cyclic.app"
+
 const api = axios.create({
-  baseURL: "http://localhost:8000/api/",
+  baseURL: baseUrl,
   withCredentials: true,
 });
 

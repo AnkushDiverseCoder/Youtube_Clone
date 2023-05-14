@@ -27,7 +27,7 @@ const connect = () => {
 app.use(cookieParser())
 app.use(express.json());
 app.use(cors({
-  origin: ["https://contentplayer.netlify.app", "http://localhost:3000"],
+  origin: "*",
 }));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);

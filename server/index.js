@@ -26,15 +26,15 @@ const connect = () => {
 //middlewares
 app.use(cookieParser())
 app.use(express.json());
-app.use(cors({credentials:true,origin:true}));
+app.use(cors({credentials:true,origin:"https://odd-cyan-moth-kit.cyclic.app/videos/random"}));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
 app.use((req,res,next)=>{
-  res.setHeader('Access-Control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+  res.header('Access-Control-Allow-Origin','*');
+  res.header('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+  res.header('Access-Control-Allow-Methods','Content-Type','Authorization');
   next(); 
 })
 

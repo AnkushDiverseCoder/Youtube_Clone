@@ -141,18 +141,18 @@ const Video = () => {
   }, [path, dispatch]);
 
   const handleLike = async () => {
-    await api.put(`/users/like/${currentVideo?._id}`);
+    await api.put(`/users/like/${currentVideo?._id}` , {token:currentUser.token});
     dispatch(like(currentUser._id));
   };
   const handleDislike = async () => {
-    await api.put(`/users/dislike/${currentVideo?._id}`);
+    await api.put(`/users/dislike/${currentVideo?._id}`, {token:currentUser.token});
     dispatch(dislike(currentUser._id));
   };
 
   const handleSub = async () => {
     currentUser?.subscribedUsers?.includes(channel._id)
-      ? await api.put(`/users/unsub/${channel?._id}`)
-      : await api.put(`/users/sub/${channel?._id}`);
+      ? await api.put(`/users/unsub/${channel?._id}`,{token:currentUser.token})
+      : await api.put(`/users/sub/${channel?._id}`,{token:currentUser.token});
     dispatch(subscription(channel._id));
   };
 

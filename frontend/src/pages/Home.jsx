@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
 import api from "../api/API";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -11,14 +12,20 @@ const Container = styled.div`
 
 const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
+  const {currentUser} = useSelector(state=>state.user)
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await api.get(`/videos/${type}`);
-      setVideos(res.data);
+     if(type === "sub"){
+       const res = await api.post(`/videos/${type}`,{token:currentUser.token});
+       setVideos(res.data);
+     }else{
+       const res = await api.get(`/videos/${type}`);
+       setVideos(res.data);
+     }
     }
     fetchVideos()
-  }, [ type ])
+  }, [ type ,currentUser.token ])
 
   return (
     <Container>

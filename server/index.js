@@ -27,10 +27,8 @@ const connect = () => {
 app.use(cookieParser())
 app.use(express.json());
 app.use(cors({
-  "origin": "*",
+  "origin": ["https://odd-cyan-moth-kit.cyclic.app/api/"],
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
 }));
 
 app.use("/api/auth", authRoutes);

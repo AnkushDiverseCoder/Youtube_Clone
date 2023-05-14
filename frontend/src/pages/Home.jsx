@@ -17,7 +17,7 @@ const Home = ({ type }) => {
   useEffect(() => {
     const fetchVideos = async () => {
      if(type === "sub"){
-       const res = await api.post(`/videos/${type}`,{token:currentUser.token});
+       const res = await api.post(`/videos/${type}`,{token:currentUser?.token});
        setVideos(res.data);
      }else{
        const res = await api.get(`/videos/${type}`);
